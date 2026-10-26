@@ -1,0 +1,11 @@
+# Bus Fever Party! - Nivel 1 (facil)
+# Formato: ver README.md
+TABLERO 6 6
+
+# VEHICULO <CARRO|BUS> <COLOR> <fila> <columna> <H|V> <largo> <capacidad>
+VEHICULO CARRO ROJO 0 0 H 1 2
+VEHICULO CARRO AZUL 0 4 H 1 2
+VEHICULO BUS VERDE 3 1 V 2 4
+
+# PASAJEROS <COLOR> <cantidad> ...
+PASAJEROS ROJO 2 AZUL 2 VERDE 4

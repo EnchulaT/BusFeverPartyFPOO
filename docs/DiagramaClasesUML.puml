@@ -1,0 +1,152 @@
+' Pegar en https://plantuml.com/ para visualizarlo.
+' Diagrama de clases COMPLETO (version 1, de arranque) del proyecto Bus Fever Party!.
+' Es un punto de partida: a medida que implementen cada modulo, actualicen este
+' archivo con los atributos/metodos privados y relaciones que vayan agregando.
+@startuml
+
+enum Color {
+  ROJO
+  AZUL
+  AMARILLO
+  VERDE
+  MORADO
+  NARANJA
+  ROSA
+  CYAN
+}
+
+enum Orientacion {
+  HORIZONTAL
+  VERTICAL
+}
+
+enum TipoVehiculo {
+  CARRO
+  BUS
+}
+
+enum EstadoJuego {
+  EN_CURSO
+  GANADO
+  PERDIDO
+}
+
+class CPosicion {
++ fila: int
++ columna: int
+}
+
+class CPasajero {
+- color: Color
++ CPasajero(color)
++ getColor(): Color
+}
+
+abstract class CVehiculo {
+# id: int
+# color: Color
+# orientacion: Orientacion
+# largo: int
+# capacidadMaxima: int
+# pasajerosActuales: int
+# posicion: CPosicion
+# enParqueadero: bool
+
++ {abstract} getTipo(): TipoVehiculo
++ getId(): int
++ getColor(): Color
++ celdasOcupadas(): vector<CPosicion>
++ subirPasajero(): bool
+}
+
+class CCarro {
++ getTipo(): TipoVehiculo
+}
+
+class CBus {
++ getTipo(): TipoVehiculo
+}
+
+class CZonaParqueo {
+- indice: int
+- vehiculoEstacionado: CVehiculo*
++ estaLibre(): bool
++ asignarVehiculo(vehiculo): bool
++ liberar()
+}
+
+class CFilaEstatica {
+- pasajeros: vector<CPasajero>
++ verPrimero(): CPasajero*
++ sacarPrimero(pasajeroSacado): bool
+}
+
+class CFilaRotatoria {
+- posiciones: vector<optional<CPasajero>>
++ verPasajeroEnEmbarque(): CPasajero*
++ intentarRellenar(filaEstatica): bool
++ sacarPasajeroEnEmbarque(): bool
++ girar()
+}
+
+class CTablero {
+- filas: int
+- columnas: int
+- vehiculos: vector<unique_ptr<CVehiculo>>
+- zonasParqueo: array<CZonaParqueo,4>
++ agregarVehiculo(vehiculo): CVehiculo*
++ moverVehiculo(idVehiculo): ResultadoMovimiento
++ todasLasZonasOcupadas(): bool
+}
+
+class CNivel {
++ filas: int
++ columnas: int
++ vehiculos: vector<CVehiculoDatos>
++ secuenciaPasajeros: vector<Color>
+}
+
+class CCargadorNivel {
++ cargar(rutaArchivo, nivelResultado): bool
+}
+
+class CControladorJuego {
+- tablero: CTablero&
+- filaEstatica: CFilaEstatica&
+- filaRotatoria: CFilaRotatoria&
+- estado: EstadoJuego
++ jugarTurno(idVehiculo): ResultadoMovimiento
++ ejecutarCicloEmbarque()
++ verificarVictoria(): bool
++ verificarDerrota(): bool
+}
+
+class CVistaConsola {
++ mostrarTablero(tablero)
++ pedirVehiculoAMover(tablero): int
++ mostrarResultadoFinal(estado)
+}
+
+CVehiculo <|-- CCarro
+CVehiculo <|-- CBus
+
+CTablero "1" o-- "*" CVehiculo
+CTablero "1" o-- "4" CZonaParqueo
+CZonaParqueo ..> CVehiculo : referencia
+
+CFilaRotatoria "1" o-- "*" CPasajero
+CFilaEstatica "1" o-- "*" CPasajero
+CFilaRotatoria ..> CFilaEstatica : se rellena desde
+
+CCargadorNivel ..> CNivel : construye
+CNivel ..> CVehiculoDatos
+
+CControladorJuego "1" --> "1" CTablero
+CControladorJuego "1" --> "1" CFilaEstatica
+CControladorJuego "1" --> "1" CFilaRotatoria
+
+CVistaConsola ..> CTablero : lee
+CVistaConsola ..> CFilaEstatica : lee
+CVistaConsola ..> CFilaRotatoria : lee
+
+@enduml

@@ -1,0 +1,16 @@
+' PLANTILLA para el fragmento UML de un modulo.
+' Copien este archivo como docs/uml_<modulo>.puml (ej: docs/uml_tablero.puml),
+' reemplacen CNombreDeSuClase por la clase y completen atributos y metodos
+' (los del contrato + los privados auxiliares que agreguen en su .cpp/.h).
+@startuml
+class CNombreDeSuClase{
+- atributo: tipo
+
++ metodo1(parametros): tipoRetorno
++ metodo2(parametros): tipoRetorno
+}
+
+' Colaboradores (ejemplo):
+' CNombreDeSuClase ..> CTablero : usa
+' CNombreDeSuClase ..> CVehiculo : usa
+@enduml
