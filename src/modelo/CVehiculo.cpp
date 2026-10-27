@@ -43,34 +43,54 @@ int CVehiculo::getPasajerosActuales() const {
 }
 
 bool CVehiculo::estaLleno() const {
-    // STUB: implementar
-    return false;
+    if (pasajerosActuales == capacidadMaxima) {
+        return true;
+    } 
+    else {
+        return false;
+    }
+    
 }
 
 CPosicion CVehiculo::getPosicion() const {
-    // STUB: implementar
     return posicion;
 }
 
 void CVehiculo::setPosicion(const CPosicion& nuevaPosicion) {
-    // STUB: implementar
+    this->posicion = nuevaPosicion;
 }
 
 vector<CPosicion> CVehiculo::celdasOcupadas() const {
-    // STUB: implementar (usar posicion, orientacion y largo)
-    return vector<CPosicion>();
+    vector<CPosicion> celdas;
+
+    if (orientacion == Orientacion::HORIZONTAL){
+        for (int i {}; i < largo; i++) {
+     celdas.push_back(CPosicion {posicion.fila, posicion.columna+i});
+    }
+    }
+    
+    else {
+       for (int i {}; i < largo; i++) {
+     celdas.push_back(CPosicion {posicion.fila+i, posicion.columna});
+    }
+    }
+    return celdas;
 }
 
 bool CVehiculo::estaEnParqueadero() const {
-    // STUB: implementar
     return enParqueadero;
 }
 
 void CVehiculo::setEnParqueadero(bool valor) {
-    // STUB: implementar
+    enParqueadero = valor;
 }
 
-bool CVehiculo::subirPasajero() {
-    // STUB: implementar (false si ya esta lleno)
+bool CVehiculo::subirPasajero() {   
+    if (estaLleno() == true) {
     return false;
+    }
+    else {
+        pasajerosActuales = pasajerosActuales + 1;
+        return true;
+    }
 }
