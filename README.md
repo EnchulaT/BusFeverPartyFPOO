@@ -76,8 +76,7 @@ Ver `niveles/nivel1.txt`, `nivel2.txt` y `nivel3.txt` como ejemplos.
 ## Quien hace que
 
 Esto es trabajo nuestro, no esta repartido por el profesor como en el Taller 5: nos
-toca repartirnos los modulos entre nosotros. Sugerencia de division (igual de
-independiente que en el taller, por eso cada modulo tiene su propio header):
+toca repartirnos los modulos entre nosotros. 
 
 | Area                       | Clases                                            |
 |-----------------------------|----------------------------------------------------|
