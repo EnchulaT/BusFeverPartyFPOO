@@ -36,31 +36,34 @@
  */
 #ifndef _CCONTROLADORJUEGO_H_
 #define _CCONTROLADORJUEGO_H_
+
 #include "CTipos.h"
 #include "CTablero.h"
 #include "CFilaEstatica.h"
 #include "CFilaRotatoria.h"
 
-class CControladorJuego
-{
-  private:
+class CControladorJuego {
+private:
     CTablero& tablero;
     CFilaEstatica& filaEstatica;
     CFilaRotatoria& filaRotatoria;
     EstadoJuego estado;
 
-  public:
-    CControladorJuego(CTablero& tablero, CFilaEstatica& filaEstatica, CFilaRotatoria& filaRotatoria);
+public:
+    CControladorJuego(
+        CTablero& tablero,
+        CFilaEstatica& filaEstatica,
+        CFilaRotatoria& filaRotatoria
+    );
 
-    // Mueve el vehiculo, ejecuta el ciclo de embarque si quedo parqueado,
-    // actualiza 'estado' y lo devuelve.
     ResultadoMovimiento jugarTurno(int idVehiculo);
 
-    // Ciclo descrito en el contrato arriba.
     void ejecutarCicloEmbarque();
 
     EstadoJuego getEstado() const;
+
     bool verificarVictoria() const;
+
     bool verificarDerrota() const;
 };
 
