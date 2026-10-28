@@ -1,5 +1,16 @@
 /*
     Proyecto: Bus Fever Party! FPOO-C++ Edition
+    Curso: Fundamentos de Programacion Orientada a Objetos (Univalle)
+
+    Autores:
+      - Alan Fernando Garcia Rodriguez
+      - Maximiliano Díaz Zapata
+      - Cristhian Felipe Morales Tovar
+      - Juan Camilo Oliveros Fernandez
+      - Juan Manuel Arboleda Benavidez
+
+    Repositorio: https://github.com/EnchulaT/BusFeverPartyFPOO
+
     main.cpp - arma el juego a partir de los contratos y corre el ciclo de turnos.
 
     EN PRINCIPIO NO SE EDITA (como en el Taller 5), pero como aqui solo hay un
