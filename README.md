@@ -5,6 +5,16 @@ Implementa el juego "Bus Fever Party!" en C++ con arquitectura MVC y principios 
 
 Enunciado completo: ver el PDF del proyecto que subio el profesor.
 
+## Integrantes
+
+- Alan Fernando Garcia Rodriguez
+- Maximiliano Díaz Zapata
+- Cristhian Felipe Morales Tovar
+- Juan Camilo Oliveros Fernandez
+- Juan Manuel Arboleda Benavidez
+
+Repositorio del proyecto: https://github.com/EnchulaT/BusFeverPartyFPOO
+
 ## Como esta organizado
 
 Mismo esquema de "contratos" que usamos en el Taller 5 (Drogueria con GitHub), pero
