@@ -1,0 +1,35 @@
+' Fragmento UML del modulo Pasajeros y filas (CFilaEstatica, CFilaRotatoria).
+@startuml
+class CFilaEstatica{
+- pasajeros: vector<CPasajero>
+
++ CFilaEstatica(secuencia: vector<CPasajero>)
++ estaVacia(): bool
++ cantidadRestante(): int
++ verPrimero(): CPasajero*
++ sacarPrimero(pasajeroSacado: CPasajero&): bool
+}
+
+class CFilaRotatoria{
+- posiciones: vector<optional<CPasajero>>
+
++ CFilaRotatoria(capacidad: int)
++ getCapacidad(): int
++ estaLlena(): bool
++ estaVacia(): bool
++ verPasajeroEnEmbarque(): CPasajero*
++ intentarRellenar(filaEstatica: CFilaEstatica&): bool
++ sacarPasajeroEnEmbarque(): bool
++ girar()
+}
+
+note right of CFilaRotatoria
+  Posicion de embarque: indice 0.
+  girar(): el del indice 1 pasa al embarque
+  y el que estaba en embarque pasa al final.
+end note
+
+CFilaEstatica o-- CPasajero : contiene
+CFilaRotatoria o-- CPasajero : contiene
+CFilaRotatoria ..> CFilaEstatica : se rellena desde
+@enduml
