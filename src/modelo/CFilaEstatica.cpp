@@ -2,7 +2,9 @@
     Proyecto: Bus Fever Party! FPOO-C++ Edition
     Modulo: Fila Estatica de pasajeros
 
-    ESTE ARCHIVO ES SUYO: reemplacen los STUB por la implementacion real.
+    El primer pasajero de la fila es siempre pasajeros[0]: es el unico que se
+    puede consultar (verPrimero) o sacar (sacarPrimero). Al sacarlo, los demas
+    avanzan un puesto.
 */
 #include "CFilaEstatica.h"
 
@@ -10,21 +12,25 @@ CFilaEstatica::CFilaEstatica(const vector<CPasajero>& secuencia) : pasajeros(sec
 }
 
 bool CFilaEstatica::estaVacia() const {
-    // STUB: implementar
-    return true;
+    return pasajeros.size() == 0;
 }
 
 int CFilaEstatica::cantidadRestante() const {
-    // STUB: implementar
-    return 0;
+    return (int)pasajeros.size();
 }
 
 const CPasajero* CFilaEstatica::verPrimero() const {
-    // STUB: implementar
-    return nullptr;
+    if (estaVacia()) {
+        return nullptr;
+    }
+    return &pasajeros[0];
 }
 
 bool CFilaEstatica::sacarPrimero(CPasajero& pasajeroSacado) {
-    // STUB: implementar (false si la fila esta vacia)
-    return false;
+    if (estaVacia()) {
+        return false;
+    }
+    pasajeroSacado = pasajeros[0];
+    pasajeros.erase(pasajeros.begin());
+    return true;
 }
